@@ -1005,14 +1005,23 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   function isMob(){ return innerWidth<1100 || innerWidth<innerHeight; }
-  var lw=0, lh=0;
+  var lw=0, lh=0, heroIn=document.querySelector('.hero .in'), topOff=3.9;
+  /* stacked layouts: park the knot in the free space between the nav and the intro text, so it never sits on the menu or leaves a gap */
+  function measureHero(){
+    if(!heroIn) return;
+    var navB=66, free=Math.max(heroIn.getBoundingClientRect().top+scrollY-navB,0);
+    var yPx=navB+free*.42, halfH=Math.tan(camera.fov*Math.PI/360)*camera.position.z;
+    topOff=Math.min(5,Math.max(1,(1-2*yPx/innerHeight)*halfH));
+  }
   function resize(){
     var w=innerWidth,h=innerHeight;
     if(lw && w===lw && isMob() && Math.abs(h-lh)<160) return;   /* phone browser bars sliding in/out: skip the costly resize */
     lw=w; lh=h; renderer.setSize(w,h,false); camera.aspect=w/h;
     camera.position.z = isMob() ? 11 : 9; camera.updateProjectionMatrix();
+    measureHero();
   }
   addEventListener('resize',resize); resize();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measureHero);
 
   var snapped=false, fAcc=0,fN=0, clock=new THREE.Clock(), camY=0, smx=0, smy=0, heroS=1, lastDraw=0, motion=reduce?.2:1;
   function frame(now){
@@ -1032,7 +1041,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var fit=Math.min(1,halfW/8.5);
     var phase=Math.min(scrollY/(innerHeight*.7),1);
     var land=mobile&&innerWidth>innerHeight*1.2&&innerHeight<560;   /* short landscape phone: the knot sits beside the text instead of above it */
-    var tx=land?halfW*.56:(mobile?0:side*(halfW-3.5*fit-.2)), ty=camY-(land?0:(mobile?-3.9*(1-phase):0.1));
+    var tx=land?halfW*.56:(mobile?0:side*(halfW-3.5*fit-.2)), ty=camY-(land?0:(mobile?-topOff*(1-phase):0.1));
     if(!snapped){ hero.position.set(tx,ty,0); snapped=true; }
     hero.position.x+=(tx-hero.position.x)*.05; hero.position.y+=(ty-hero.position.y)*.12;
     spin*=.96;
