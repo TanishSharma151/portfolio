@@ -271,6 +271,10 @@ body{overscroll-behavior-y:none}
 header nav{padding-top:env(safe-area-inset-top)}
 footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
 .btn,.links a,.menu,.lb button{min-height:44px}
+.logo{display:inline-flex;align-items:center;min-height:44px}
+.menu{width:44px;height:44px}
+.card .row a{display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
+.thumbs img{min-height:40px}
 @media(min-width:1800px){.wrap{max-width:1200px}}
 
 /* phone and small-screen overrides: kept last so they win over the base rules above */
@@ -322,6 +326,18 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
   .steps li{flex:0 0 80%;scroll-snap-align:start}
   .case-img{display:none}
   .chat{padding:0 0 env(safe-area-inset-bottom)}
+}
+/* on short windows (typical laptops) the scroll hint would sit on top of the buttons */
+@media(max-height:860px){.hint{display:none}}
+/* short landscape screens (phones on their side): text on the left, the 3D knot on the right, headline and intro kept in the first screen */
+@media(max-height:520px) and (min-aspect-ratio:6/5){
+  .hero{align-items:center;padding:84px 0 28px}
+  .hero .wrap{width:100%}
+  .hero .in{max-width:min(540px,58vw)}
+  .name{margin-top:12px}
+  h1{font-size:clamp(26px,4.6vw,40px);margin:6px 0 8px}
+  .lead{font-size:14px;margin-top:8px}
+  .cta{margin-top:14px}
 }
 </style>
 </head>
@@ -414,7 +430,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
 
       <article class="card wide">
         <div class="shots" data-name="E-commerce storefront">
-          <button class="shot-main" type="button" aria-label="Enlarge screenshot"><img src="img/store-home-1100.webp" srcset="img/store-home-560.webp 560w, img/store-home-1100.webp 1100w" sizes="(max-width:900px) 92vw, 520px" alt="Storefront home page with a live gold rate bar and a featured earrings hero" width="1100" height="688" loading="lazy" decoding="async"></button>
+          <button class="shot-main" type="button" aria-label="Enlarge screenshot"><img src="img/store-home-1100.webp" srcset="img/store-home-560.webp 560w, img/store-home-1100.webp 1100w" sizes="(max-width:760px) calc(100vw - 84px), (max-width:900px) calc(100vw - 100px), 520px" alt="Storefront home page with a live gold rate bar and a featured earrings hero" width="1100" height="688" loading="lazy" decoding="async"></button>
           <div class="thumbs">
             <button type="button" class="on" data-src="img/store-home.webp" data-sm="img/store-home-560.webp" data-mid="img/store-home-1100.webp" data-cap="Home: hero with the live gold rate bar"><img src="img/store-home-360.webp" alt="" width="360" height="225" loading="lazy"></button>
             <button type="button" data-src="img/store-tiles.webp" data-sm="img/store-tiles-560.webp" data-mid="img/store-tiles-1100.webp" data-cap="Home: shop by category"><img src="img/store-tiles-360.webp" alt="" width="360" height="225" loading="lazy"></button>
@@ -441,7 +457,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
 
       <article class="card">
         <div class="shots" data-name="Sales-verification platform">
-          <button class="shot-main" type="button" aria-label="Enlarge screenshot"><img src="img/sales-overview-1100.webp" srcset="img/sales-overview-560.webp 560w, img/sales-overview-1100.webp 1100w" sizes="(max-width:900px) 92vw, 520px" alt="Sales Tracker overview dashboard with sales, bills and customers" width="1100" height="688" loading="lazy" decoding="async"></button>
+          <button class="shot-main" type="button" aria-label="Enlarge screenshot"><img src="img/sales-overview-1100.webp" srcset="img/sales-overview-560.webp 560w, img/sales-overview-1100.webp 1100w" sizes="(max-width:760px) calc(100vw - 84px), (max-width:900px) calc(100vw - 100px), 520px" alt="Sales Tracker overview dashboard with sales, bills and customers" width="1100" height="688" loading="lazy" decoding="async"></button>
           <div class="thumbs">
             <button type="button" class="on" data-src="img/sales-overview.webp" data-sm="img/sales-overview-560.webp" data-mid="img/sales-overview-1100.webp" data-cap="Overview: sales, bills and customers at a glance"><img src="img/sales-overview-360.webp" alt="" width="360" height="225" loading="lazy"></button>
             <button type="button" data-src="img/sales-register.webp" data-sm="img/sales-register-560.webp" data-mid="img/sales-register-1100.webp" data-cap="Sales register: every piece sold, searchable by HUID, tag or bill"><img src="img/sales-register-360.webp" alt="" width="360" height="225" loading="lazy"></button>
@@ -462,7 +478,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
 
       <article class="card">
         <div class="shots" data-name="Operations Suite">
-          <button class="shot-main" type="button" aria-label="Enlarge screenshot"><img src="img/suite-requests-1100.webp" srcset="img/suite-requests-560.webp 560w, img/suite-requests-1100.webp 1100w" sizes="(max-width:900px) 92vw, 520px" alt="Operations Suite stock requests with a three-level approval trail" width="1100" height="688" loading="lazy" decoding="async"></button>
+          <button class="shot-main" type="button" aria-label="Enlarge screenshot"><img src="img/suite-requests-1100.webp" srcset="img/suite-requests-560.webp 560w, img/suite-requests-1100.webp 1100w" sizes="(max-width:760px) calc(100vw - 84px), (max-width:900px) calc(100vw - 100px), 520px" alt="Operations Suite stock requests with a three-level approval trail" width="1100" height="688" loading="lazy" decoding="async"></button>
           <div class="thumbs">
             <button type="button" class="on" data-src="img/suite-requests.webp" data-sm="img/suite-requests-560.webp" data-mid="img/suite-requests-1100.webp" data-cap="Requests from Warehouse: three-level approval trail"><img src="img/suite-requests-360.webp" alt="" width="360" height="225" loading="lazy"></button>
             <button type="button" data-src="img/suite-dashboard.webp" data-sm="img/suite-dashboard-560.webp" data-mid="img/suite-dashboard-1100.webp" data-cap="Dashboard: branch status and low-stock alerts"><img src="img/suite-dashboard-360.webp" alt="" width="360" height="225" loading="lazy"></button>
@@ -530,7 +546,7 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
         <div class="chips"><span class="chip">NestJS</span><span class="chip">Next.js</span><span class="chip">PostgreSQL</span><span class="chip">Prisma</span><span class="chip">Docker</span><span class="chip">Traefik</span></div>
       </div>
       <figure class="case-img">
-        <img src="img/sales-register-1100.webp" srcset="img/sales-register-560.webp 560w, img/sales-register-1100.webp 1100w" sizes="(max-width:900px) 92vw, 520px" alt="Sales Tracker register listing every piece sold, searchable by phone, design code, tag, HUID or bill number" width="1100" height="688" loading="lazy" decoding="async">
+        <img src="img/sales-register-1100.webp" srcset="img/sales-register-560.webp 560w, img/sales-register-1100.webp 1100w" sizes="(max-width:760px) calc(100vw - 84px), (max-width:900px) calc(100vw - 100px), 520px" alt="Sales Tracker register listing every piece sold, searchable by phone, design code, tag, HUID or bill number" width="1100" height="688" loading="lazy" decoding="async">
         <figcaption class="mono">Sales register, shown with made-up demo data.</figcaption>
       </figure>
     </div>
@@ -654,7 +670,6 @@ footer{padding-bottom:max(30px,env(safe-area-inset-bottom))}
 </section>
 <div class="tip" id="tip">move the mouse · click the shape</div>
 
-<script defer src="vendor/three.r128.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1016,7 +1031,8 @@ document.addEventListener('DOMContentLoaded',function(){
     var halfW=Math.tan(camera.fov*Math.PI/360)*camera.position.z*camera.aspect;
     var fit=Math.min(1,halfW/8.5);
     var phase=Math.min(scrollY/(innerHeight*.7),1);
-    var tx=mobile?0:side*(halfW-3.5*fit-.2), ty=camY-(mobile?-3.9*(1-phase):0.1);
+    var land=mobile&&innerWidth>innerHeight*1.2&&innerHeight<560;   /* short landscape phone: the knot sits beside the text instead of above it */
+    var tx=land?halfW*.56:(mobile?0:side*(halfW-3.5*fit-.2)), ty=camY-(land?0:(mobile?-3.9*(1-phase):0.1));
     if(!snapped){ hero.position.set(tx,ty,0); snapped=true; }
     hero.position.x+=(tx-hero.position.x)*.05; hero.position.y+=(ty-hero.position.y)*.12;
     spin*=.96;
@@ -1024,7 +1040,7 @@ document.addEventListener('DOMContentLoaded',function(){
     rings.forEach(function(r,i){ r.rotation.z+=dt*(.3+i*.2); r.rotation.x+=dt*.1*(i+1); });
 
     var hit=fine&&hitTest(); hovering=hit;
-    heroS+=((hit?1.1:1)-heroS)*.1; hero.scale.setScalar(heroS*(mobile?Math.max(.02,.36*(1-phase))*(innerWidth<500?1:1.5):fit));
+    heroS+=((hit?1.1:1)-heroS)*.1; hero.scale.setScalar(heroS*(mobile?Math.max(.02,(land?.7:.36)*(1-phase))*(land||innerWidth<500?1:1.5):fit));
     if(hit!==heroHover){ heroHover=hit; document.body.style.cursor=hit?'pointer':''; cur.classList.toggle('big',hit||uiHover>0); }
 
     var hue=(.6+progress*.35+hueShift)%1;
@@ -1052,8 +1068,14 @@ document.addEventListener('DOMContentLoaded',function(){
   } /* end startScene */
 
   var booted=false;
-  function boot(){ if(booted)return; booted=true; startScene(); }
-  if('requestIdleCallback' in window) requestIdleCallback(boot,{timeout:1200}); else setTimeout(boot,300);
+  /* three.js (590 KB) is fetched only once the page has loaded, so it never delays first paint or the menu and reveal scripts above */
+  function boot(){
+    if(booted)return; booted=true;
+    if(window.THREE){ startScene(); return; }
+    var s=document.createElement('script'); s.src='vendor/three.r128.min.js'; s.onload=startScene; s.onerror=startScene; document.head.appendChild(s);
+  }
+  function schedule(){ if('requestIdleCallback' in window) requestIdleCallback(boot,{timeout:1200}); else setTimeout(boot,300); }
+  if(document.readyState==='complete') schedule(); else addEventListener('load',schedule);
 });
 </script>
 </body>
